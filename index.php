@@ -100,24 +100,31 @@
 <div class="container pb-5 mb-4" style="border-bottom : solid 1px #eee;">
   <div class="mb-4 row" style="border-bottom : dashed 1px #eee;">
     <div class="py-4 text-center col">
-      <span style="color : #003c57; font-size : 20pt;  ">NEW ARRIVALS</span>
+      <span style="color : #003c57; font-size : 20pt;  ">NEW ARRIVALS test</span>
     </div>
   </div>
 
   <div class="row" >
+<?php
+  $tampil = tampilNewReleaseGambar($koneksi);
+
+  foreach($tampil as $rec){
+?>
     <div class="col-md">
       <div class="card">
-        <img class="card-img-top" src="./img/produk/1.jpg" alt="Card image cap">
+        <img class="card-img-top" src="./upload/sepatu/<?= $rec['gambar'] ?>" alt="Card image cap">
         <div class="card-body">
           <p class="text-center card-text" >
-            <span style="color : #003c57;">Active Kaze Full Black</span> <br/>
-          <span style="color : #003c57;"> Rp. 295.000 </span>
+            <span style="color : #003c57;"><?= $rec['nama'] ?></span> <br/>
+          <span style="color : #003c57;"> Rp. <?= $rec['harga'] ?> </span>
           </p>
           
         </div>
       </div>
     </div>
-    <div class="col-md" style="color : #003c57;">
+<?php } ?>
+
+    <!-- <div class="col-md" style="color : #003c57;">
       <div class="card">
         <img class="card-img-top" src="./img/produk/2.jpg" alt="Card image cap">
         <div class="card-body">
@@ -129,6 +136,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="col-md">
       <div class="card">
         <img class="card-img-top" src="./img/produk/3.jpg" alt="Card image cap">
@@ -140,10 +149,10 @@
           
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md">
       <div class="card">
         <img class="card-img-top" src="./img/produk/4.jpg"alt="Card image cap">
@@ -181,7 +190,7 @@
       </div>
     </div>
 </div>
-</div>
+</div> -->
 <!-- end of kontainer new arrival -->
 
 <!-- kontainer untuk testimoni pelanggan -->
