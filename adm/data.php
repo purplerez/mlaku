@@ -126,13 +126,16 @@ if (isset($_POST['uploadGambar'])){
     exit();
 }
 if(isset($_POST['updateSepatu'])){
+    // copas dari input data 
     $nama = htmlspecialchars($_POST['nama']);    
     $ukuran = implode(',',$_POST['ukuran']); 
     $harga = htmlspecialchars($_POST['harga']);
     $jenis = htmlspecialchars($_POST['jenis']);
     $deskripsi = htmlspecialchars($_POST['deskripsi']);
+    //  end of copas dari input data 
+
     $id = $_POST['id'];   
-    
+//    khusus di part ini nama index WAJIB sama dengan nama field / kolom dalam tabel yang dituju
     $data = [
         'nama' => $nama,
         'ukuran' => $ukuran,
@@ -161,7 +164,11 @@ if(isset($_POST['updateSepatuGambar']))
     $jenis = htmlspecialchars($_POST['jenis']);
     $deskripsi = htmlspecialchars($_POST['deskripsi']);
     $id = $_POST['id'];   
+
+    // variabel gambar yang baru jika diupdate maka variabel ini akan terisi
     $gambar = basename($_FILES['gambar']['name']);
+
+    // variabel gambar yang lama ditabel barang
     $gblama = $_POST['gambar_lama'];
 
     if(!empty($gambar)){
