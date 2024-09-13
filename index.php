@@ -115,8 +115,8 @@
         <img class="card-img-top" src="./upload/sepatu/<?= $rec['gambar'] ?>" alt="Card image cap">
         <div class="card-body">
           <p class="text-center card-text" >
-            <span style="color : #003c57;"><?= $rec['nama'] ?></span> <br/>
-          <span style="color : #003c57;"> Rp. <?= $rec['harga'] ?> </span>
+          <a href="detail.php?id=<?= $rec['id'] ?>" >  <span style="color : #003c57;"><?= $rec['nama'] ?></span> </a><br/>
+          <span style="color : #003c57;"> Rp. <?= number_format($rec['harga'],0,',','.') ?> </span>
           </p>
           
         </div>
@@ -189,8 +189,8 @@
         </div>
       </div>
     </div>
-</div>
-</div> -->
+</div>-->
+</div> 
 <!-- end of kontainer new arrival -->
 
 <!-- kontainer untuk testimoni pelanggan -->

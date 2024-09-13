@@ -1,6 +1,6 @@
 <?php 
   require_once "./config/config.php";
-  $id = $_GET['id'];
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -64,38 +64,37 @@
      
 <!-- end of navbar -->
 <?php 
-    $satu = tampilSatuBarangGambar($koneksi, $id);
+    // $satu = tampilSatuBarangGambar($koneksi, $id);
 
 ?>
 <div class="container" style="min-height: 300px; border:solid 1px #eeeeee; padding : 10px;">
     <div class="row">
         <div class="col">
-            <H3>
-                <?= $satu['nama'] ?>
+            <H3 align=center>
+               SHOP ALL
             </H3>
         </div>
     </div>
     <div class="row">
-        <div class="col-4" >
-            <img src="./upload/sepatu/<?= $satu['gambar'] ?>" alt="" srcset="" style="width:100%; border-radius : 5px; ">
-        </div>
-        <div class="col-7" >
-            <table>
+        <div class="col">
+            <table width="500">
                 <tr>
-                    <td>Ukuran </td>
-                    <td>: </td>
-                    <td><?= $satu['ukuran']?></td>
+                    <td width="100" style="width:100px;">Gambar</td>
+                    <td>Products</td>
+                    <td>Price</td>
                 </tr>
+                <?php 
+                    $tampil = tampilBarangGambar($koneksi);
+                    foreach($tampil as $rec){
+                ?>
                 <tr>
-                    <td>Harga </td>
-                    <td>: </td>
-                    <td>Rp. <?= number_format($satu['harga'], 0, ',','.') ?></td>
+                    <td width="100"><img src="./upload//sepatu/<?= $rec['gambar']?>" style="width :100%;" /></td>
+                    <td><a href="detail.php?id=<?= $rec['id'] ?>" > <?= $rec['nama'] ?></a></td>
+                    <td><?= $rec['harga'] ?></td>
                 </tr>
-                <tr>
-                    <td>Deskripsi </td>
-                    <td>: </td>
-                    <td><?= $satu['deskripsi']?></td>
-                </tr>
+                <?php
+                    }
+                ?>
             </table>
         </div>
     </div>

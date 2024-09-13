@@ -6,7 +6,7 @@
 // secara default (tanpa disetting) :
 // user adalah 'root' 
 // dan password nya kosong
-$rootDir = $_SERVER['DOCUMENT_ROOT'];
+$rootDir = $_SERVER['DOCUMENT_ROOT'].'/mlaku/';
 $server = "localhost";
 $dbuser = "root_rez";
 $dbpass = 'ires123';

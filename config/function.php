@@ -213,7 +213,7 @@ function updateBarangGambar ($data, $koneksi, $id){
 
 // function untuk menampilkan new release dengan case data barang dan gambar tergabung dalam 1 tabel
 function tampilNewReleaseGambar($koneksi){
-    $sql = "SELECT nama, harga, gambar FROM sepatu_gambar ORDER BY id DESC limit 3 ";
+    $sql = "SELECT id, nama, harga, gambar FROM sepatu_gambar ORDER BY id DESC limit 3 ";
     $stmt = mysqli_query($koneksi, $sql);
 
     if(mysqli_num_rows($stmt) > 0 ) return mysqli_fetch_all($stmt, MYSQLI_ASSOC);
