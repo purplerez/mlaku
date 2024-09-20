@@ -221,10 +221,22 @@ function tampilNewReleaseGambar($koneksi){
 }
 
 function tampilNewRelease($koneksi){
-    $sql = "SELECT sepatu.id as idsepatu, nama, harga, gambar.file_gambar, gambar.sepatu_id FROM sepatu 
-                    LEFT JOIN gambar ON sepatu.id = gambar.sepatu_id 
-                    GROUP BY gambar.sepatu_id, nama, gambar, harga, gambar.file_gambar, gambar.sepatu_id
-                    ORDER BY sepatu.id DESC LIMIT 3";
+    $sql = "SELECT sepatu.id as idsepatu, 
+                    sepatu.nama, 
+                    sepatu.harga, 
+                    (SELECT file_gambar from gambar where sepatu_id = sepatu.id ORDER BY id LIMIT 1) as gambar,
+                    MAX(gambar.file_gambar) as file_gambar, 
+                    gambar.sepatu_id 
+            FROM sepatu 
+            LEFT JOIN gambar ON sepatu.id = gambar.sepatu_id 
+            GROUP BY sepatu.id, sepatu.nama, sepatu.harga, gambar.sepatu_id 
+            ORDER BY sepatu.id DESC 
+            LIMIT 3;";
+
+    // $sql = "SELECT sepatu.id as idsepatu, nama, harga, gambar.file_gambar, gambar.sepatu_id FROM sepatu 
+    //                 LEFT JOIN gambar ON sepatu.id = gambar.sepatu_id 
+    //                 GROUP BY gambar.sepatu_id, nama, gambar, harga, gambar.file_gambar, gambar.sepatu_id
+    //                 ORDER BY sepatu.id DESC LIMIT 3";
     $stmt = mysqli_query($koneksi, $sql);
 
     if(mysqli_num_rows($stmt) > 0 ) return mysqli_fetch_all($stmt, MYSQLI_ASSOC);
