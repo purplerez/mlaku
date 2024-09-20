@@ -68,6 +68,13 @@
 
 ?>
 <div class="container" style="min-height: 300px; border:solid 1px #eeeeee; padding : 10px;">
+  <div class="row">
+    <div class="col-12">
+      <form action="" method="get">
+        <input type="text" name="cari" id=""> <input type="submit" value="Cari" name="btnCari">
+      </form>
+    </div>
+  </div>
     <div class="row">
         <div class="col">
             <H3 align=center>
@@ -84,7 +91,14 @@
                     <td>Price</td>
                 </tr>
                 <?php 
+                  if(isset($_GET['btnCari'])){
+                    $tampil = tampilBarangCari($koneksi, $_GET['cari']);
+                  }
+                  else 
                     $tampil = tampilBarangGambar($koneksi);
+
+                  if($tampil == false ) echo 'Barang Kosong';
+                  else { 
                     foreach($tampil as $rec){
                 ?>
                 <tr>
@@ -94,6 +108,7 @@
                 </tr>
                 <?php
                     }
+                  }
                 ?>
             </table>
         </div>

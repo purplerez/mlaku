@@ -223,8 +223,16 @@ function tampilNewReleaseGambar($koneksi){
 function tampilNewRelease($koneksi){
     $sql = "SELECT sepatu.id as idsepatu, nama, harga, gambar.file_gambar, gambar.sepatu_id FROM sepatu 
                     LEFT JOIN gambar ON sepatu.id = gambar.sepatu_id 
-                    GROUP BY gambar.sepatu_id
+                    GROUP BY gambar.sepatu_id, nama, gambar, harga, gambar.file_gambar, gambar.sepatu_id
                     ORDER BY sepatu.id DESC LIMIT 3";
+    $stmt = mysqli_query($koneksi, $sql);
+
+    if(mysqli_num_rows($stmt) > 0 ) return mysqli_fetch_all($stmt, MYSQLI_ASSOC);
+    else return false; 
+}
+// function untuk mencari barang berdasarkan keyword
+function tampilBarangCari($koneksi, $keyword){
+    $sql = "SELECT id, gambar, nama, harga FROM sepatu_gambar WHERE nama LIKE '%$keyword%'  OR ukuran LIKE '%$keyword%'";
     $stmt = mysqli_query($koneksi, $sql);
 
     if(mysqli_num_rows($stmt) > 0 ) return mysqli_fetch_all($stmt, MYSQLI_ASSOC);
