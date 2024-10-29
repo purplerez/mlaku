@@ -36,8 +36,8 @@ if(isset($_POST['addSepatu'])){
         $result = inputBarang($data, $koneksi);
 
         // jika eksekusi query berhasil maka halaman akan di arahkan ke input_sepatu.php dengan pesan sukses = 1
-        if ($result) header("Location: input_sepatu.php?success=1");  
-        else header("Location: input_sepatu.php?errno=1");  // jika eksekusi tidak berhasil, maka halaman akan diarahkan ke halmaan input_sepatu.php dengan error no = 1
+        if ($result) header("Location: input_sepatu.php?status=success&no=1");  
+        else header("Location: input_sepatu.php?status=error&no=1");  // jika eksekusi tidak berhasil, maka halaman akan diarahkan ke halmaan input_sepatu.php dengan error no = 1
     } 
     else 
         header("Location: input_sepatu.php?error=missing_field&field=" . $validasi); // line ini berisi pesan error jika ada salah satu inputan kosong dan inputan yang mana yang kosong
@@ -88,7 +88,7 @@ if(isset($_POST['addSepatuGambar'])){
             // document root adalah htdocs nya anda
             $dir = $_SERVER['DOCUMENT_ROOT'].'/mlaku/upload/sepatu/';
             $upload = tambahGambar($dir, $_FILES['gambar']);
-            if($upload) header("location: input_sepatu_gambar.php?success=1");
+            if($upload) header("location: input_sepatu_gambar.php?success=3");
             else header("location: input_sepatu_gambar.php?errno=1");
         } 
         else header("Location: input_sepatu.php?errno=1");  // jika eksekusi tidak berhasil, maka halaman akan diarahkan ke halmaan input_sepatu.php dengan error no = 1
@@ -114,7 +114,7 @@ if (isset($_POST['uploadGambar'])){
         if($result){
             $dir = $_SERVER['DOCUMENT_ROOT'].'/mlaku/upload/sepatu/';
             $upload = tambahGambar($dir, $_FILES['gambar']);
-            if($upload) header("location: upload_gambar.php?id=$id&success=2");
+            if($upload) header("location: upload_gambar.php?id=$id&success=4");
             else header("location:upload_gambar.php?id=$id&errno=2");
         }
         else header("location:upload_gambar.php?id=$id&errno=2");
@@ -149,7 +149,7 @@ if(isset($_POST['updateSepatu'])){
     if($validasi === 0){
         $result = updateBarang($koneksi, $data, $id);
         
-        if ($result) header("location: tampil_barang.php?success=1");
+        if ($result) header("location: tampil_barang.php?success=3");
         else header("location: tampil_barang.php?errno=1");
     }
     else 
@@ -204,14 +204,14 @@ if(isset($_POST['updateSepatuGambar']))
                 if($upload) 
                 { 
                     unlink("../upload/sepatu/$gblama");
-                    header("location: tampil_barang_gambar.php");
+                    header("location: tampil_barang_gambar.php?success=4");
                 }
                 else {
                     header("location: tampil_barang_gambar.php?errno=2");
                 }
             }
             else {
-                header("location: tampil_barang_gambar.php");
+                header("location: tampil_barang_gambar.php?success=3");
             }
         }
         else {

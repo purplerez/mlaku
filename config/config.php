@@ -5,6 +5,7 @@ require_once 'koneksi.php';
 require_once 'function_upload.php';
 require_once 'function_status.php';
 require_once 'function.php';
+require_once 'function_status.php';
 require_once $rootDir.'/adm/data.php';
 // require_once ''
 
