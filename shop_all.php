@@ -13,7 +13,7 @@
     <link rel="icon" href="./img/logo.ico" type="image/x-icon" />
     
     <!-- Bootstrap CSS yang sudah di pindah ke lokal, tidak lagi membutuhkan akses online-->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" >
    
     <!-- fontawesome adalah font yang digunakan untuk 'icon-icon' seperti icon social media, icon amplop, arrow (di bagian footer) dll akses online -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -104,7 +104,7 @@
                 <tr>
                     <td width="100"><img src="./upload//sepatu/<?= $rec['gambar']?>" style="width :100%;" /></td>
                     <td><a href="detail.php?id=<?= $rec['id'] ?>" > <?= $rec['nama'] ?></a></td>
-                    <td><?= $rec['harga'] ?></td>
+                    <td>Rp. <?= number_format($rec['harga'],0,',','.') ?></td>
                 </tr>
                 <?php
                     }
