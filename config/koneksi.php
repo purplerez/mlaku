@@ -8,8 +8,8 @@
 // dan password nya kosong
 $rootDir = $_SERVER['DOCUMENT_ROOT'].'/mlaku/';
 $server = "localhost";
-$dbuser = "root_rez";
-$dbpass = 'ires123';
+$dbuser = "root";
+$dbpass = '';
 
 // lalu kita juga membutuhkan nama database yang akan kita gunakan
 // dalam hal ini saya menggunakan nama database 'mlaku'
